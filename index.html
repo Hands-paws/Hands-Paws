@@ -2,26 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hands and Paws</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Playfair+Display&family=Pacifico&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Quicksand', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f8ff;
             color: #333;
-            padding-bottom: 50px; /* Adjust based on footer height */
+            text-align: center; /* Centering everything globally */
         }
         header {
             background-color: #87ceeb;
             padding: 20px;
-            text-align: center;
             color: #fff;
         }
         header h1 {
             margin: 0;
             font-size: 2.5em;
+            font-family: 'Pacifico', cursive;
         }
         nav {
             margin-top: 10px;
@@ -30,27 +33,35 @@
             color: #fff;
             margin: 0 15px;
             text-decoration: none;
+            font-family: 'Playfair Display', serif;
         }
         .hero {
-            text-align: center;
             padding: 50px 20px;
             background-color: #add8e6;
         }
         .hero img {
-            width: 300px;
+            width: 300px; /* Resize image */
             border-radius: 10px;
         }
-        .section {
-            padding: 20px;
-            text-align: center;
+        .hero h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2em;
         }
-        .section img {
-            max-width: 100%;
-            height: auto;
+        .hero p {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.2em;
+        }
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+        }
+        .section p {
+            font-family: 'Quicksand', sans-serif;
         }
         .form-container {
             max-width: 600px;
             margin: 0 auto;
+            text-align: center;
         }
         .form-container form {
             background-color: #fff;
@@ -59,35 +70,42 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .form-container label {
-            display: block;
-            margin-top: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1em;
         }
         .form-container input, .form-container textarea {
-            width: 100%;
+            font-family: 'Quicksand', sans-serif;
+            width: 90%; /* Ensure inputs fit better */
+            margin: 10px 0;
             padding: 10px;
-            margin-top: 5px;
+            border-radius: 4px;
             border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
         }
-        .form-container button {
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #87ceeb;
+        .dog-treat-button {
+            display: inline-block;
+            background-color: #D2691E;
+            color: white;
+            font-size: 16px;
+            font-family: 'Quicksand', sans-serif;
             border: none;
-            color: #fff;
-            font-size: 1.1em;
             cursor: pointer;
-            border-radius: 4px;
+            padding: 15px 30px;
+            border-radius: 25px;
+            margin: 20px auto;
+            width: 200px;
+            text-align: center;
+        }
+        .dog-treat-button:hover {
+            background-color: #CD853F;
         }
         .footer {
             background-color: #87ceeb;
             color: #fff;
-            text-align: center;
             padding: 10px;
-            position: static; /* Changed to static */
+            margin-top: 40px;
+            text-align: center;
+            position: relative;
             width: 100%;
-            bottom: 0;
         }
     </style>
 </head>
@@ -108,7 +126,7 @@
     <h2>Welcome to Hands and Paws!</h2>
     <img src="https://image.petmd.com/files/inline-images/golden-retriever-2.jpg?VersionId=9HAclc1bWh8XvyNoGi2.UxpdEp1gygb_" alt="Golden Retriever with dog treats">
     <p>Homemade Dog Treats for Your Furry Friends</p>
-    <a href="#order"><button>Order Now</button></a>
+    <a href="#order"><button class="dog-treat-button">Order Now</button></a>
 </section>
 
 <section class="section" id="about">
@@ -120,7 +138,7 @@
     <h2>My Treats</h2>
     <p><strong>Treats by the Dozen:</strong> $6 per dozen. Perfect for spoiling your pup!</p>
     <p><strong>Jumbo Personalized Treats:</strong> $3 each. Add your dog’s name for a special touch!</p>
-    <img src="https://i.postimg.cc/k5CwR1Pw/133123-Peanut-Butter-and-Pumpkin-Dog-Treats-mfs-018-1-ad40545a341b4238baf99d90089dfde3.jpg" alt="Various dog treats including peanut butter and pumpkin flavored treats" width="300" height="auto">
+    <img src="https://i.postimg.cc/k5CwR1Pw/133123-Peanut-Butter-and-Pumpkin-Dog-Treats-mfs-018-1-ad40545a341b4238baf99d90089dfde3.jpg" alt="Various dog treats" width="300" height="auto">
     <p>Don't worry about the payment method just yet! After you place your order, I'll send you a confirmation text with all the payment details.</p>
 </section>
 
@@ -149,7 +167,7 @@
         <label for="address">Delivery Address:</label>
         <input type="text" id="address" name="address" required>
         
-        <button type="submit">Send Order</button>
+        <button type="submit" class="dog-treat-button">Send Order</button>
     </form>
 </section>
 
@@ -165,7 +183,7 @@
         <label for="message">Message:</label>
         <textarea id="message" name="message" rows="4" required placeholder="Your message here..."></textarea>
         
-        <button type="submit">Send Message</button>
+        <button type="submit" class="dog-treat-button">Send Message</button>
     </form>
 </section>
 
@@ -185,10 +203,14 @@
 </section>
 
 <footer class="footer">
-    <p>Contact me at: grayson.roth0811@gmail.com | Phone: 913-948-0197</p>
+    <p>Contact us at: grayson.roth0811@gmail.com | Phone: 913-948-0197</p>
     <p>Delivery area: Prairie Village, KS and nearby areas</p>
 </footer>
 
 </body>
 </html>
+
+
+
+
 
