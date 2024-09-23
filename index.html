@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Disable zoom on input -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Prevent zoom on mobile -->
     <title>Hands and Paws</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,6 +58,7 @@
         .section p {
             font-family: 'Quicksand', sans-serif;
         }
+
         .form-container {
             max-width: 600px;
             margin: 0 auto;
@@ -69,19 +70,26 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .form-container label {
+            display: block;
             font-family: 'Playfair Display', serif;
             font-size: 1.1em;
+            margin-bottom: 5px;
+            text-align: left;
         }
+
         .form-container input, .form-container textarea {
             font-family: 'Quicksand', sans-serif;
-            font-size: 16px; /* Increase font size to prevent mobile zoom */
-            width: 90%;
+            font-size: 16px; /* Prevent zooming on mobile by ensuring at least 16px */
+            width: 100%; /* Full-width for input fields */
             margin: 10px 0;
-            padding: 12px; /* Increased padding */
+            padding: 12px;
             border-radius: 4px;
             border: 1px solid #ddd;
+            box-sizing: border-box;
         }
+
         .dog-treat-button {
             display: inline-block;
             background-color: #D2691E;
@@ -96,9 +104,11 @@
             width: 200px;
             text-align: center;
         }
+
         .dog-treat-button:hover {
             background-color: #CD853F;
         }
+
         .footer {
             background-color: #87ceeb;
             color: #fff;
@@ -210,6 +220,8 @@
 
 </body>
 </html>
+
+
 
 
 
