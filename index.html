@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Prevent zoom on mobile -->
+    <!-- Updated Meta Viewport for Mobile Usability -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hands and Paws</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -174,7 +175,8 @@
             font-size: 1.1em;
             margin-bottom: 5px;
         }
-        .form-container input, .form-container textarea {
+        .form-container input,
+        .form-container textarea {
             font-family: 'Quicksand', sans-serif;
             font-size: 16px; /* Prevent zooming on mobile */
             width: 100%; /* Full-width */
@@ -183,6 +185,12 @@
             border-radius: 4px;
             border: 1px solid #ddd;
             box-sizing: border-box;
+        }
+        .form-container input:focus,
+        .form-container textarea:focus {
+            border-color: #D2691E;
+            outline: none;
+            box-shadow: 0 0 5px rgba(210, 105, 30, 0.5);
         }
         .form-container button {
             width: 100%;
@@ -219,6 +227,7 @@
             header {
                 text-align: center;
             }
+            /* Optional: Add a mobile-friendly navigation menu (e.g., hamburger menu) */
         }
     </style>
 </head>
@@ -230,7 +239,7 @@
         <a href="#home" aria-label="Home">Home</a>
         <a href="#about" aria-label="About">About</a>
         <a href="#faq" aria-label="FAQ">FAQ</a>
-        <a href="#order" aria-label="Order">Order</a>
+        <a href="#place-order" aria-label="Order">Order</a>
         <a href="#ingredients" aria-label="Ingredients">Ingredients</a>
         <a href="#contact" aria-label="Contact">Contact</a>
     </nav>
@@ -248,25 +257,25 @@
     <p>Hi, I'm Grayson Roth, and I'm 12 years old. At Hands and Paws, I make delicious dog treats right here in Prairie Village, KS. My treats are made with love and are perfect for your furry friends!</p>
 </section>
 
-<!-- Testimonials Section Removed -->
+<!-- Testimonials Section Completely Removed -->
 
 <section class="section" id="faq">
     <h2>Frequently Asked Questions</h2>
     <div class="faq-item">
-        <div class="faq-question">What ingredients are used in the treats?</div>
-        <div class="faq-answer">
+        <div class="faq-question" aria-expanded="false" aria-controls="faq1">What ingredients are used in the treats?</div>
+        <div class="faq-answer" id="faq1">
             <p>Our treats are made with all-natural, dog-friendly ingredients including Whole Wheat Flour, Peanut Butter, Canned Pumpkin, Ground Cinnamon, Eggs, Salt, and Water. No artificial preservatives, flavors, or colors!</p>
         </div>
     </div>
     <div class="faq-item">
-        <div class="faq-question">How can I place an order?</div>
-        <div class="faq-answer">
+        <div class="faq-question" aria-expanded="false" aria-controls="faq2">How can I place an order?</div>
+        <div class="faq-answer" id="faq2">
             <p>Simply click on the "Order Now" button at the top of the page, fill out the order form with your details, and submit. I'll send you a confirmation text with all the payment details.</p>
         </div>
     </div>
     <div class="faq-item">
-        <div class="faq-question">What is the delivery area?</div>
-        <div class="faq-answer">
+        <div class="faq-question" aria-expanded="false" aria-controls="faq3">What is the delivery area?</div>
+        <div class="faq-answer" id="faq3">
             <p>We deliver to Prairie Village, KS and nearby areas. Please provide your address during the order process.</p>
         </div>
     </div>
@@ -277,13 +286,13 @@
     <h2>Place Your Order</h2>
     <form action="https://formspree.io/f/xdknvlzj" method="POST">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" required autocomplete="name">
         
         <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required>
+        <input type="tel" id="phone" name="phone" required autocomplete="tel">
         
         <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required autocomplete="email">
         
         <label for="treats">Type of Treats:</label>
         <p>Dozen Treats: $6 per dozen</p>
@@ -293,10 +302,10 @@
         <input type="number" id="jumbo" name="jumbo" min="0" placeholder="Quantity">
         
         <label for="personalization">Personalization Details:</label>
-        <input type="text" id="personalization" name="personalization" placeholder="Enter name for jumbo treats">
+        <input type="text" id="personalization" name="personalization" placeholder="Enter name for jumbo treats" autocomplete="off">
         
         <label for="address">Delivery Address:</label>
-        <input type="text" id="address" name="address" required>
+        <input type="text" id="address" name="address" required autocomplete="street-address">
         
         <button type="submit" class="dog-treat-button">Send Order</button>
     </form>
@@ -306,13 +315,13 @@
     <h2>Get in Touch</h2>
     <form action="https://formspree.io/f/xdknvlzj" method="POST">
         <label for="contact-name">Name:</label>
-        <input type="text" id="contact-name" name="contact-name" required>
+        <input type="text" id="contact-name" name="contact-name" required autocomplete="name">
         
         <label for="contact-email">Email Address:</label>
-        <input type="email" id="contact-email" name="contact-email" required>
+        <input type="email" id="contact-email" name="contact-email" required autocomplete="email">
         
         <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required placeholder="Your message here..."></textarea>
+        <textarea id="message" name="message" rows="4" required placeholder="Your message here..." autocomplete="off"></textarea>
         
         <button type="submit" class="dog-treat-button">Send Message</button>
     </form>
@@ -340,15 +349,17 @@
 </footer>
 
 <script>
-    // FAQ Toggle
+    // FAQ Toggle with ARIA Attributes for Accessibility
     document.querySelectorAll('.faq-question').forEach(item => {
         item.addEventListener('click', () => {
-            item.classList.toggle('active');
+            const isActive = item.classList.toggle('active');
             const answer = item.nextElementSibling;
-            if (answer.classList.contains('open')) {
-                answer.classList.remove('open');
-            } else {
+            if (isActive) {
                 answer.classList.add('open');
+                item.setAttribute('aria-expanded', 'true');
+            } else {
+                answer.classList.remove('open');
+                item.setAttribute('aria-expanded', 'false');
             }
         });
     });
@@ -356,6 +367,7 @@
 
 </body>
 </html>
+
 
 
 
