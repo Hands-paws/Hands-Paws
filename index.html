@@ -59,40 +59,24 @@
         }
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: url('https://images.unsplash.com/photo-1558944353-90d7f1c72fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            padding-top: 80px; /* To offset the fixed header */
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(135, 206, 235, 0.6); /* Overlay */
-            z-index: 1;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: #fff;
+            padding: 100px 20px 50px; /* Adjusted padding to accommodate fixed header */
+            background-color: #add8e6;
             text-align: center;
-            padding: 0 20px;
         }
-        .hero-content h2 {
+        .hero img {
+            width: 300px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .hero h2 {
             font-family: 'Pacifico', cursive;
-            font-size: 3em;
-            margin-bottom: 20px;
+            font-size: 2em;
+            margin-bottom: 10px;
         }
-        .hero-content p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
+        .hero p {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 20px;
         }
         .dog-treat-button {
             display: inline-block;
@@ -157,23 +141,6 @@
             margin-top: 10px;
             font-family: 'Playfair Display', serif;
             color: #D2691E;
-        }
-        /* Gallery */
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-        .gallery img {
-            width: 300px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
         }
         /* FAQ */
         .faq-item {
@@ -270,10 +237,6 @@
             header {
                 text-align: center;
             }
-            .gallery img {
-                width: 100%;
-                max-width: 300px;
-            }
         }
     </style>
 </head>
@@ -284,7 +247,6 @@
     <nav>
         <a href="#home" aria-label="Home">Home</a>
         <a href="#about" aria-label="About">About</a>
-        <a href="#gallery" aria-label="Gallery">Gallery</a>
         <a href="#testimonials" aria-label="Testimonials">Testimonials</a>
         <a href="#faq" aria-label="FAQ">FAQ</a>
         <a href="#order" aria-label="Order">Order</a>
@@ -294,26 +256,15 @@
 </header>
 
 <section class="hero" id="home">
-    <div class="hero-content">
-        <h2>Welcome to Hands and Paws!</h2>
-        <p>Homemade Dog Treats for Your Furry Friends</p>
-        <a href="#place-order"><button class="dog-treat-button">Order Now</button></a>
-    </div>
+    <h2>Welcome to Hands and Paws!</h2>
+    <img src="https://image.petmd.com/files/inline-images/golden-retriever-2.jpg?VersionId=9HAclc1bWh8XvyNoGi2.UxpdEp1gygb_" alt="Golden Retriever with dog treats">
+    <p>Homemade Dog Treats for Your Furry Friends</p>
+    <a href="#place-order"><button class="dog-treat-button">Order Now</button></a>
 </section>
 
 <section class="section" id="about">
     <h2>About Me</h2>
     <p>Hi, I'm Grayson Roth, and I'm 12 years old. At Hands and Paws, I make delicious dog treats right here in Prairie Village, KS. My treats are made with love and are perfect for your furry friends!</p>
-</section>
-
-<section class="section" id="gallery">
-    <h2>Our Gallery</h2>
-    <div class="gallery">
-        <img src="https://i.postimg.cc/k5CwR1Pw/133123-Peanut-Butter-and-Pumpkin-Dog-Treats-mfs-018-1-ad40545a341b4238baf99d90089dfde3.jpg" alt="Dog Treats">
-        <img src="https://images.unsplash.com/photo-1598133894004-f75f1165b8b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Happy Dog">
-        <img src="https://images.unsplash.com/photo-1601758123927-47b0f6d3ab74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Dog Enjoying Treat">
-        <!-- Add more images as needed -->
-    </div>
 </section>
 
 <section class="section" id="testimonials">
@@ -437,6 +388,7 @@
 
 </body>
 </html>
+
 
 
 
