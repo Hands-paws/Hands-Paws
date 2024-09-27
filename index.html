@@ -2,166 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Updated Meta Viewport for Mobile Usability -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Prevent zoom on mobile -->
     <title>Hands and Paws</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Playfair+Display&family=Pacifico&display=swap" rel="stylesheet">
     <style>
-        /* Reset and Base Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
         body {
             font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #f0f8ff;
             color: #333;
-            line-height: 1.6;
-            scroll-behavior: smooth;
+            text-align: center;
         }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        /* Header */
         header {
             background-color: #87ceeb;
             padding: 20px;
             color: #fff;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         header h1 {
             margin: 0;
             font-size: 2.5em;
             font-family: 'Pacifico', cursive;
-            display: inline-block;
         }
         nav {
-            display: inline-block;
-            float: right;
             margin-top: 10px;
         }
         nav a {
             color: #fff;
             margin: 0 15px;
+            text-decoration: none;
             font-family: 'Playfair Display', serif;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
         }
-        nav a:hover {
-            color: #ffe4b5;
-        }
-        /* Hero Section */
         .hero {
-            padding: 100px 20px 50px; /* Adjusted padding to accommodate fixed header */
+            padding: 50px 20px;
             background-color: #add8e6;
-            text-align: center;
         }
         .hero img {
             width: 300px;
             border-radius: 10px;
-            margin-top: 20px;
         }
         .hero h2 {
             font-family: 'Pacifico', cursive;
             font-size: 2em;
-            margin-bottom: 10px;
         }
         .hero p {
             font-family: 'Quicksand', sans-serif;
             font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        .dog-treat-button {
-            display: inline-block;
-            background-color: #D2691E;
-            color: white;
-            font-size: 1.2em;
-            font-family: 'Quicksand', sans-serif;
-            border: none;
-            cursor: pointer;
-            padding: 15px 30px;
-            border-radius: 25px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .dog-treat-button:hover {
-            background-color: #CD853F;
-            transform: scale(1.05);
-        }
-        /* Sections */
-        .section {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
         }
         .section h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-        .section h2::after {
-            content: '';
-            width: 50px;
-            height: 3px;
-            background-color: #D2691E;
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+            font-size: 2em;
         }
         .section p {
             font-family: 'Quicksand', sans-serif;
-            font-size: 1.1em;
-            max-width: 800px;
-            margin: 0 auto 20px;
         }
-        /* FAQ */
-        .faq-item {
-            text-align: left;
-            max-width: 800px;
-            margin: 10px auto;
-        }
-        .faq-question {
-            font-weight: 600;
-            cursor: pointer;
-            position: relative;
-            padding-right: 20px;
-        }
-        .faq-question::after {
-            content: '+';
-            position: absolute;
-            right: 0;
-            top: 0;
-            font-size: 1.5em;
-            transition: transform 0.3s ease;
-        }
-        .faq-question.active::after {
-            transform: rotate(45deg);
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            font-family: 'Quicksand', sans-serif;
-        }
-        .faq-answer.open {
-            max-height: 200px; /* Adjust as needed */
-        }
-        /* Forms */
+
         .form-container {
             max-width: 600px;
             margin: 0 auto;
-            text-align: left;
+            text-align: center;
         }
         .form-container form {
             background-color: #fff;
@@ -169,65 +70,53 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .form-container label {
             display: block;
             font-family: 'Playfair Display', serif;
             font-size: 1.1em;
             margin-bottom: 5px;
+            text-align: left;
         }
-        .form-container input,
-        .form-container textarea {
+
+        .form-container input, .form-container textarea {
             font-family: 'Quicksand', sans-serif;
-            font-size: 16px; /* Prevent zooming on mobile */
-            width: 100%; /* Full-width */
+            font-size: 16px; /* Prevent zooming on mobile by ensuring at least 16px */
+            width: 100%; /* Full-width for input fields */
             margin: 10px 0;
             padding: 12px;
             border-radius: 4px;
             border: 1px solid #ddd;
             box-sizing: border-box;
         }
-        .form-container input:focus,
-        .form-container textarea:focus {
-            border-color: #D2691E;
-            outline: none;
-            box-shadow: 0 0 5px rgba(210, 105, 30, 0.5);
-        }
-        .form-container button {
-            width: 100%;
-            padding: 15px;
+
+        .dog-treat-button {
+            display: inline-block;
             background-color: #D2691E;
             color: white;
+            font-size: 16px;
+            font-family: 'Quicksand', sans-serif;
             border: none;
-            border-radius: 25px;
-            font-size: 1.1em;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            padding: 15px 30px;
+            border-radius: 25px;
+            margin: 20px auto;
+            width: 200px;
+            text-align: center;
         }
-        .form-container button:hover {
+
+        .dog-treat-button:hover {
             background-color: #CD853F;
-            transform: scale(1.02);
         }
-        /* Footer */
-        footer {
+
+        .footer {
             background-color: #87ceeb;
             color: #fff;
-            padding: 20px;
+            padding: 10px;
+            margin-top: 40px;
             text-align: center;
             position: relative;
             width: 100%;
-        }
-        footer p {
-            margin: 5px 0;
-        }
-        /* Media Queries */
-        @media (max-width: 768px) {
-            nav {
-                display: none; /* Hide navigation on smaller screens */
-            }
-            header {
-                text-align: center;
-            }
-            /* Optional: Add a mobile-friendly navigation menu (e.g., hamburger menu) */
         }
     </style>
 </head>
@@ -238,8 +127,7 @@
     <nav>
         <a href="#home" aria-label="Home">Home</a>
         <a href="#about" aria-label="About">About</a>
-        <a href="#faq" aria-label="FAQ">FAQ</a>
-        <a href="#place-order" aria-label="Order">Order</a>
+        <a href="#order" aria-label="Order">Order</a>
         <a href="#ingredients" aria-label="Ingredients">Ingredients</a>
         <a href="#contact" aria-label="Contact">Contact</a>
     </nav>
@@ -249,7 +137,7 @@
     <h2>Welcome to Hands and Paws!</h2>
     <img src="https://image.petmd.com/files/inline-images/golden-retriever-2.jpg?VersionId=9HAclc1bWh8XvyNoGi2.UxpdEp1gygb_" alt="Golden Retriever with dog treats">
     <p>Homemade Dog Treats for Your Furry Friends</p>
-    <a href="#place-order"><button class="dog-treat-button">Order Now</button></a>
+    <a href="#order"><button class="dog-treat-button">Order Now</button></a>
 </section>
 
 <section class="section" id="about">
@@ -257,42 +145,25 @@
     <p>Hi, I'm Grayson Roth, and I'm 12 years old. At Hands and Paws, I make delicious dog treats right here in Prairie Village, KS. My treats are made with love and are perfect for your furry friends!</p>
 </section>
 
-<!-- Testimonials Section Completely Removed -->
-
-<section class="section" id="faq">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-        <div class="faq-question" aria-expanded="false" aria-controls="faq1">What ingredients are used in the treats?</div>
-        <div class="faq-answer" id="faq1">
-            <p>Our treats are made with all-natural, dog-friendly ingredients including Whole Wheat Flour, Peanut Butter, Canned Pumpkin, Ground Cinnamon, Eggs, Salt, and Water. No artificial preservatives, flavors, or colors!</p>
-        </div>
-    </div>
-    <div class="faq-item">
-        <div class="faq-question" aria-expanded="false" aria-controls="faq2">How can I place an order?</div>
-        <div class="faq-answer" id="faq2">
-            <p>Simply click on the "Order Now" button at the top of the page, fill out the order form with your details, and submit. I'll send you a confirmation text with all the payment details.</p>
-        </div>
-    </div>
-    <div class="faq-item">
-        <div class="faq-question" aria-expanded="false" aria-controls="faq3">What is the delivery area?</div>
-        <div class="faq-answer" id="faq3">
-            <p>We deliver to Prairie Village, KS and nearby areas. Please provide your address during the order process.</p>
-        </div>
-    </div>
-    <!-- Add more FAQs as needed -->
+<section class="section" id="order">
+    <h2>My Treats</h2>
+    <p><strong>Treats by the Dozen:</strong> $6 per dozen. Perfect for spoiling your pup!</p>
+    <p><strong>Jumbo Personalized Treats:</strong> $3 each. Add your dog’s name for a special touch!</p>
+    <img src="https://i.postimg.cc/k5CwR1Pw/133123-Peanut-Butter-and-Pumpkin-Dog-Treats-mfs-018-1-ad40545a341b4238baf99d90089dfde3.jpg" alt="Various dog treats" width="300" height="auto">
+    <p>Don't worry about the payment method just yet! After you place your order, I'll send you a confirmation text with all the payment details.</p>
 </section>
 
-<section class="section form-container" id="place-order">
+<section class="form-container" id="place-order">
     <h2>Place Your Order</h2>
     <form action="https://formspree.io/f/xdknvlzj" method="POST">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required autocomplete="name">
+        <input type="text" id="name" name="name" required>
         
         <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required autocomplete="tel">
+        <input type="tel" id="phone" name="phone" required>
         
         <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required autocomplete="email">
+        <input type="email" id="email" name="email" required>
         
         <label for="treats">Type of Treats:</label>
         <p>Dozen Treats: $6 per dozen</p>
@@ -302,26 +173,26 @@
         <input type="number" id="jumbo" name="jumbo" min="0" placeholder="Quantity">
         
         <label for="personalization">Personalization Details:</label>
-        <input type="text" id="personalization" name="personalization" placeholder="Enter name for jumbo treats" autocomplete="off">
+        <input type="text" id="personalization" name="personalization" placeholder="Enter name for jumbo treats">
         
         <label for="address">Delivery Address:</label>
-        <input type="text" id="address" name="address" required autocomplete="street-address">
+        <input type="text" id="address" name="address" required>
         
         <button type="submit" class="dog-treat-button">Send Order</button>
     </form>
 </section>
 
-<section class="section form-container" id="contact">
+<section class="form-container" id="contact">
     <h2>Get in Touch</h2>
     <form action="https://formspree.io/f/xdknvlzj" method="POST">
         <label for="contact-name">Name:</label>
-        <input type="text" id="contact-name" name="contact-name" required autocomplete="name">
+        <input type="text" id="contact-name" name="contact-name" required>
         
         <label for="contact-email">Email Address:</label>
-        <input type="email" id="contact-email" name="contact-email" required autocomplete="email">
+        <input type="email" id="contact-email" name="contact-email" required>
         
         <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required placeholder="Your message here..." autocomplete="off"></textarea>
+        <textarea id="message" name="message" rows="4" required placeholder="Your message here..."></textarea>
         
         <button type="submit" class="dog-treat-button">Send Message</button>
     </form>
@@ -330,7 +201,7 @@
 <section class="section" id="ingredients">
     <h2>Ingredients</h2>
     <p>Our treats are made with all-natural, dog-friendly ingredients:</p>
-    <ul style="list-style: inside;">
+    <ul>
         <li>Whole Wheat Flour</li>
         <li>Peanut Butter</li>
         <li>Canned Pumpkin</li>
@@ -342,28 +213,10 @@
     <p>No artificial preservatives, flavors, or colors!</p>
 </section>
 
-<footer>
-    <p>Contact us at: <a href="mailto:grayson.roth0811@gmail.com" style="color: #fff; text-decoration: underline;">grayson.roth0811@gmail.com</a> | Phone: <a href="tel:+19139480197" style="color: #fff; text-decoration: underline;">913-948-0197</a></p>
+<footer class="footer">
+    <p>Contact us at: grayson.roth0811@gmail.com | Phone: 913-948-0197</p>
     <p>Delivery area: Prairie Village, KS and nearby areas</p>
-    <p>&copy; 2024 Hands and Paws. All rights reserved.</p>
 </footer>
-
-<script>
-    // FAQ Toggle with ARIA Attributes for Accessibility
-    document.querySelectorAll('.faq-question').forEach(item => {
-        item.addEventListener('click', () => {
-            const isActive = item.classList.toggle('active');
-            const answer = item.nextElementSibling;
-            if (isActive) {
-                answer.classList.add('open');
-                item.setAttribute('aria-expanded', 'true');
-            } else {
-                answer.classList.remove('open');
-                item.setAttribute('aria-expanded', 'false');
-            }
-        });
-    });
-</script>
 
 </body>
 </html>
