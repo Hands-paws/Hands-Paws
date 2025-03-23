@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- Prevent zoom on mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Hands and Paws</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,7 @@
             background-color: #87ceeb;
             padding: 20px;
             color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         header h1 {
             margin: 0;
@@ -27,21 +28,46 @@
             font-family: 'Pacifico', cursive;
         }
         nav {
-            margin-top: 10px;
+            margin-top: 15px;
         }
         nav a {
             color: #fff;
             margin: 0 15px;
             text-decoration: none;
             font-family: 'Playfair Display', serif;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        nav a:hover {
+            transform: translateY(-2px);
+        }
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+        nav a:hover:after {
+            width: 100%;
         }
         .hero {
             padding: 50px 20px;
             background-color: #add8e6;
+            margin-bottom: 20px;
         }
         .hero img {
             width: 300px;
             border-radius: 10px;
+            max-width: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .hero img:hover {
+            transform: scale(1.03);
         }
         .hero h2 {
             font-family: 'Pacifico', cursive;
@@ -51,24 +77,64 @@
             font-family: 'Quicksand', sans-serif;
             font-size: 1.2em;
         }
+        .section {
+            padding: 30px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
         .section h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2em;
+            color: #D2691E;
+            margin-bottom: 20px;
         }
         .section p {
             font-family: 'Quicksand', sans-serif;
+            line-height: 1.6;
+        }
+        .section img {
+            max-width: 100%;
+        }
+        
+        .treat-examples {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .treat-example {
+            width: 300px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .treat-example:hover {
+            transform: translateY(-5px);
+        }
+        
+        .treat-example img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .treat-example p {
+            margin-top: 8px;
+            font-style: italic;
         }
 
         .form-container {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 40px;
             text-align: center;
         }
         .form-container form {
             background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
         .form-container label {
@@ -77,17 +143,25 @@
             font-size: 1.1em;
             margin-bottom: 5px;
             text-align: left;
+            color: #D2691E;
         }
 
         .form-container input, .form-container textarea {
             font-family: 'Quicksand', sans-serif;
-            font-size: 16px; /* Prevent zooming on mobile by ensuring at least 16px */
-            width: 100%; /* Full-width for input fields */
-            margin: 10px 0;
+            font-size: 16px;
+            width: 100%;
+            margin: 10px 0 20px;
             padding: 12px;
-            border-radius: 4px;
+            border-radius: 6px;
             border: 1px solid #ddd;
             box-sizing: border-box;
+            transition: border 0.3s ease;
+        }
+        
+        .form-container input:focus, .form-container textarea:focus {
+            border-color: #D2691E;
+            outline: none;
+            box-shadow: 0 0 5px rgba(210, 105, 30, 0.3);
         }
 
         .dog-treat-button {
@@ -96,6 +170,7 @@
             color: white;
             font-size: 16px;
             font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
             border: none;
             cursor: pointer;
             padding: 15px 30px;
@@ -103,20 +178,214 @@
             margin: 20px auto;
             width: 200px;
             text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         .dog-treat-button:hover {
             background-color: #CD853F;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .price-calculator {
+            background-color: #fffaf0;
+            border: 2px dashed #D2691E;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .price-calculator h3 {
+            color: #D2691E;
+            margin-top: 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .price-display {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #D2691E;
+        }
+
+        .payment-note {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            border-left: 4px solid #D2691E;
+            text-align: left;
+            font-style: italic;
+            color: #555;
         }
 
         .footer {
             background-color: #87ceeb;
             color: #fff;
-            padding: 10px;
+            padding: 20px;
             margin-top: 40px;
             text-align: center;
             position: relative;
             width: 100%;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+        .personalization-options {
+            display: none;
+            margin-top: 15px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            background-color: #f9f9f9;
+        }
+
+        .treat-personalization {
+            background-color: #f5f5f5;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+        
+        .treat-personalization:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .treat-personalization h4 {
+            font-family: 'Playfair Display', serif;
+            color: #D2691E;
+            margin-top: 0;
+        }
+
+        .color-section {
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        .color-section h5 {
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            color: #555;
+        }
+
+        .color-circles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .color-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .color-circle.selected {
+            transform: scale(1.1);
+            border: 2px solid #333;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+
+        .color-red { background-color: #FFB3B3; }
+        .color-orange { background-color: #FFD8B3; }
+        .color-yellow { background-color: #FFFFB3; }
+        .color-green { background-color: #B3FFB3; }
+        .color-blue { background-color: #B3D9FF; }
+        .color-indigo { background-color: #CCB3FF; }
+        .color-violet { background-color: #E6B3FF; }
+        .color-pink { background-color: #FFCCF9; }
+        .color-white { background-color: #FFFFFF; border: 1px solid #ddd; }
+
+        .add-treat-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .add-treat-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .remove-treat-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .remove-treat-btn:hover {
+            background-color: #d32f2f;
+        }
+        
+        .ingredients-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .ingredients-list li {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 15px;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            font-size: 0.9em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .ingredients-list li:hover {
+            background-color: #D2691E;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(to right, transparent, #D2691E, transparent);
+            margin: 40px auto;
+            width: 50%;
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 8px;
+                font-size: 0.9em;
+            }
+            
+            .color-circle {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .treat-examples {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .form-container form {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -140,22 +409,35 @@
     <a href="#order"><button class="dog-treat-button">Order Now</button></a>
 </section>
 
-<section class="section" id="about">
+<section class="section form-container" id="about">
     <h2>About Me</h2>
     <p>Hi, I'm Grayson Roth, and I'm 12 years old. At Hands and Paws, I make delicious dog treats right here in Prairie Village, KS. My treats are made with love and are perfect for your furry friends!</p>
 </section>
 
+<div class="section-divider"></div>
+
 <section class="section" id="order">
     <h2>My Treats</h2>
     <p><strong>Treats by the Dozen:</strong> $6 per dozen. Perfect for spoiling your pup!</p>
-    <p><strong>Jumbo Personalized Treats:</strong> $3 each. Add your dog’s name for a special touch!</p>
-    <img src="https://i.postimg.cc/k5CwR1Pw/133123-Peanut-Butter-and-Pumpkin-Dog-Treats-mfs-018-1-ad40545a341b4238baf99d90089dfde3.jpg" alt="Various dog treats" width="300" height="auto">
-    <p>Don't worry about the payment method just yet! After you place your order, I'll send you a confirmation text with all the payment details.</p>
+    <p><strong>Jumbo Personalized Treats:</strong> $3 each. Add your dog's name for a special touch!</p>
+    
+    <div class="treat-examples">
+        <div class="treat-example">
+            <img src="https://i.postimg.cc/k5CwR1Pw/133123-Peanut-Butter-and-Pumpkin-Dog-Treats-mfs-018-1-ad40545a341b4238baf99d90089dfde3.jpg" alt="Various dog treats">
+            <p>Regular treats by the dozen</p>
+        </div>
+        <div class="treat-example">
+            <img src="https://cdn.faire.com/fastly/3d22f9a21860f3e44e6c39b36a1b0ced4ed1d307a6778d264a59ebb50aa78e6c.jpeg?bg-color=FFFFFF&dpr=1&fit=crop&format=jpg&height=720&width=720" alt="Personalized dog treat example">
+            <p>Example of a personalized jumbo treat</p>
+        </div>
+    </div>
 </section>
+
+<div class="section-divider"></div>
 
 <section class="form-container" id="place-order">
     <h2>Place Your Order</h2>
-    <form action="https://formspree.io/f/xdknvlzj" method="POST">
+    <form action="https://formspree.io/f/xdknvlzj" method="POST" id="order-form">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
         
@@ -167,20 +449,53 @@
         
         <label for="treats">Type of Treats:</label>
         <p>Dozen Treats: $6 per dozen</p>
-        <input type="number" id="dozen" name="dozen" min="0" placeholder="Quantity">
+        <input type="number" id="dozen" name="dozen" min="0" value="0" placeholder="Quantity" onchange="updatePrice()">
         
         <p>Jumbo Personalized Treats: $3 each</p>
-        <input type="number" id="jumbo" name="jumbo" min="0" placeholder="Quantity">
+        <input type="number" id="jumbo" name="jumbo" min="0" value="0" placeholder="Quantity" onchange="updatePrice(); handleJumboQuantityChange()">
         
-        <label for="personalization">Personalization Details:</label>
-        <input type="text" id="personalization" name="personalization" placeholder="Enter name for jumbo treats">
+        <div id="personalization-options" class="personalization-options">
+            <p>Personalize each of your jumbo treats below. You can choose different colors for each treat!</p>
+            <div id="treats-container"></div>
+            
+            <input type="hidden" id="treats-data" name="treats-data" value="">
+        </div>
         
         <label for="address">Delivery Address:</label>
         <input type="text" id="address" name="address" required>
         
-        <button type="submit" class="dog-treat-button">Send Order</button>
+        <div class="price-calculator">
+            <h3>Order Summary</h3>
+            <div class="price-display" id="total-price">Total Price: $0.00</div>
+            <input type="hidden" id="order-summary" name="order-summary" value="">
+        </div>
+        
+        <div class="payment-note">
+            <p>Don't worry about the payment method just yet! After you place your order, I'll send you a confirmation text with all the payment details.</p>
+        </div>
+        
+        <button type="submit" class="dog-treat-button" onclick="prepareSubmission()">Send Order</button>
     </form>
 </section>
+
+<div class="section-divider"></div>
+
+<section class="section" id="ingredients">
+    <h2>Ingredients</h2>
+    <p>Our treats are made with all-natural, dog-friendly ingredients:</p>
+    <ul class="ingredients-list">
+        <li>Whole Wheat Flour</li>
+        <li>Peanut Butter</li>
+        <li>Canned Pumpkin</li>
+        <li>Ground Cinnamon</li>
+        <li>Eggs</li>
+        <li>Salt</li>
+        <li>Water</li>
+    </ul>
+    <p>No artificial preservatives, flavors, or colors!</p>
+</section>
+
+<div class="section-divider"></div>
 
 <section class="form-container" id="contact">
     <h2>Get in Touch</h2>
@@ -198,25 +513,302 @@
     </form>
 </section>
 
-<section class="section" id="ingredients">
-    <h2>Ingredients</h2>
-    <p>Our treats are made with all-natural, dog-friendly ingredients:</p>
-    <ul>
-        <li>Whole Wheat Flour</li>
-        <li>Peanut Butter</li>
-        <li>Canned Pumpkin</li>
-        <li>Ground Cinnamon</li>
-        <li>Eggs</li>
-        <li>Salt</li>
-        <li>Water</li>
-    </ul>
-    <p>No artificial preservatives, flavors, or colors!</p>
-</section>
-
 <footer class="footer">
     <p>Contact us at: grayson.roth0811@gmail.com | Phone: 913-948-0197</p>
     <p>Delivery area: Prairie Village, KS and nearby areas</p>
 </footer>
+
+<script>
+    // Global variables to track treats
+    let treatsData = [];
+    
+    function updatePrice() {
+        // Get quantities
+        const dozenQty = parseInt(document.getElementById('dozen').value) || 0;
+        const jumboQty = parseInt(document.getElementById('jumbo').value) || 0;
+        
+        // Calculate prices
+        const dozenPrice = dozenQty * 6;
+        const jumboPrice = jumboQty * 3;
+        const totalPrice = dozenPrice + jumboPrice;
+        
+        // Update just the total price
+        document.getElementById('total-price').textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+    }
+    
+    function handleJumboQuantityChange() {
+        const jumboQty = parseInt(document.getElementById('jumbo').value) || 0;
+        const personalizationOptions = document.getElementById('personalization-options');
+        
+        if (jumboQty > 0) {
+            personalizationOptions.style.display = 'block';
+            updateTreatForms(jumboQty);
+        } else {
+            personalizationOptions.style.display = 'none';
+            // Reset personalization data when jumbo treats are set to zero
+            treatsData = [];
+            document.getElementById('treats-container').innerHTML = '';
+            document.getElementById('treats-data').value = '';
+        }
+    }
+    
+    function updateTreatForms(quantity) {
+        const container = document.getElementById('treats-container');
+        
+        // Save current data before rebuilding
+        saveTreatData();
+        
+        // Update treatsData array to match the quantity
+        if (treatsData.length < quantity) {
+            // Add new treats if needed
+            while (treatsData.length < quantity) {
+                treatsData.push({
+                    name: '',
+                    treatColor: '',
+                    borderColor: ''
+                });
+            }
+        } else if (treatsData.length > quantity) {
+            // Remove excess treats
+            treatsData = treatsData.slice(0, quantity);
+        }
+        
+        // Clear the container
+        container.innerHTML = '';
+        
+        // Create a form section for each treat
+        for (let i = 0; i < quantity; i++) {
+            createTreatForm(i, container);
+        }
+    }
+    
+    function createTreatForm(index, container) {
+        const treatDiv = document.createElement('div');
+        treatDiv.className = 'treat-personalization';
+        treatDiv.id = `treat-${index}`;
+        
+        // Add treat number header
+        const header = document.createElement('h4');
+        header.textContent = `Personalized Treat #${index + 1}`;
+        treatDiv.appendChild(header);
+        
+        // Add text input (changed from dog's name)
+        const nameLabel = document.createElement('label');
+        nameLabel.textContent = 'Treat Text (Happy Birthday, Dog name, Woof, etc):';
+        nameLabel.htmlFor = `name-${index}`;
+        treatDiv.appendChild(nameLabel);
+        
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.id = `name-${index}`;
+        nameInput.placeholder = 'Enter text for treat';
+        nameInput.value = treatsData[index].name || '';
+        nameInput.addEventListener('change', () => saveTreatData());
+        treatDiv.appendChild(nameInput);
+        
+        // Add name color section (changed from treat color)
+        const treatColorSection = document.createElement('div');
+        treatColorSection.className = 'color-section';
+        
+        const treatColorHeader = document.createElement('h5');
+        treatColorHeader.textContent = 'Name Color:';
+        treatColorSection.appendChild(treatColorHeader);
+        
+        const treatColorCircles = document.createElement('div');
+        treatColorCircles.className = 'color-circles';
+        treatColorCircles.id = `treat-colors-${index}`;
+        
+        // Add color circles for treat
+        const colors = [
+            { name: 'Red', class: 'color-red' },
+            { name: 'Orange', class: 'color-orange' },
+            { name: 'Yellow', class: 'color-yellow' },
+            { name: 'Green', class: 'color-green' },
+            { name: 'Blue', class: 'color-blue' },
+            { name: 'Indigo', class: 'color-indigo' },
+            { name: 'Violet', class: 'color-violet' },
+            { name: 'Pink', class: 'color-pink' },
+            { name: 'White', class: 'color-white' }
+        ];
+        
+        colors.forEach(color => {
+            const circle = document.createElement('div');
+            circle.className = `color-circle ${color.class}`;
+            circle.setAttribute('data-color', color.name);
+            circle.onclick = () => selectColor(circle, `treat-${index}`);
+            
+            // Select the circle if it matches saved data
+            if (treatsData[index].treatColor === color.name) {
+                circle.classList.add('selected');
+            }
+            
+            treatColorCircles.appendChild(circle);
+        });
+        
+        treatColorSection.appendChild(treatColorCircles);
+        treatDiv.appendChild(treatColorSection);
+        
+        // Add border color section
+        const borderColorSection = document.createElement('div');
+        borderColorSection.className = 'color-section';
+        
+        const borderColorHeader = document.createElement('h5');
+        borderColorHeader.textContent = 'Border Color:';
+        borderColorSection.appendChild(borderColorHeader);
+        
+        const borderColorCircles = document.createElement('div');
+        borderColorCircles.className = 'color-circles';
+        borderColorCircles.id = `border-colors-${index}`;
+        
+        // Add color circles for border
+        colors.forEach(color => {
+            const circle = document.createElement('div');
+            circle.className = `color-circle ${color.class}`;
+            circle.setAttribute('data-color', color.name);
+            circle.onclick = () => selectColor(circle, `border-${index}`);
+            
+            // Select the circle if it matches saved data
+            if (treatsData[index].borderColor === color.name) {
+                circle.classList.add('selected');
+            }
+            
+            borderColorCircles.appendChild(circle);
+        });
+        
+        borderColorSection.appendChild(borderColorCircles);
+        treatDiv.appendChild(borderColorSection);
+        
+        container.appendChild(treatDiv);
+    }
+    
+    function selectColor(element, type) {
+        // Parse the type to get the category (treat/border) and index
+        const [category, index] = type.split('-');
+        
+        // Get all color circles in the same group
+        const colorGroup = element.parentElement.querySelectorAll('.color-circle');
+        
+        // If the clicked element is already selected, deselect it
+        if (element.classList.contains('selected')) {
+            element.classList.remove('selected');
+            if (category === 'treat') {
+                treatsData[index].treatColor = '';
+            } else {
+                treatsData[index].borderColor = '';
+            }
+        } else {
+            // Remove selected class from all circles in group
+            colorGroup.forEach(circle => {
+                circle.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked element
+            element.classList.add('selected');
+            
+            // Update the treat data with selected color
+            const colorName = element.getAttribute('data-color');
+            if (category === 'treat') {
+                treatsData[index].treatColor = colorName;
+            } else {
+                treatsData[index].borderColor = colorName;
+            }
+        }
+        
+        // Update hidden input
+        document.getElementById('treats-data').value = JSON.stringify(treatsData);
+    }
+    
+    function saveTreatData() {
+        // Save the current form data to treatsData array
+        const jumboQty = parseInt(document.getElementById('jumbo').value) || 0;
+        
+        for (let i = 0; i < jumboQty; i++) {
+            const nameInput = document.getElementById(`name-${i}`);
+            if (nameInput) {
+                treatsData[i].name = nameInput.value;
+            }
+        }
+        
+        // Update hidden input
+        document.getElementById('treats-data').value = JSON.stringify(treatsData);
+    }
+    
+    function prepareSubmission() {
+        // Create order summary for form submission
+        const dozenQty = parseInt(document.getElementById('dozen').value) || 0;
+        const jumboQty = parseInt(document.getElementById('jumbo').value) || 0;
+        const totalPrice = (dozenQty * 6) + (jumboQty * 3);
+        
+        // Save treats data first to ensure everything is up to date
+        saveTreatData();
+        
+        let summary = `
+            Dozen Treats: ${dozenQty} ($${(dozenQty * 6).toFixed(2)})
+            Jumbo Treats: ${jumboQty} ($${(jumboQty * 3).toFixed(2)})
+        `;
+        
+        // Add personalization details if jumbo treats are ordered
+        if (jumboQty > 0) {
+            summary += `\nPersonalized Treats Details:\n`;
+            
+            treatsData.forEach((treat, index) => {
+                summary += `
+                Treat #${index + 1}:
+                - Treat Text: ${treat.name || 'None provided'}
+                - Name Color: ${treat.treatColor || 'None selected'}
+                - Border Color: ${treat.borderColor || 'None selected'}
+                `;
+            });
+        }
+        
+        summary += `Total Price: $${totalPrice.toFixed(2)}`;
+        
+        document.getElementById('order-summary').value = summary;
+    }
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        updatePrice();
+        handleJumboQuantityChange(); // Hide personalization options initially
+        
+        // Add form submit event to make sure data is saved
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            // Prevent normal submission if validation fails
+            if (!validateForm()) {
+                e.preventDefault();
+            }
+        });
+        
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    });
+    
+    function validateForm() {
+        // Basic form validation
+        const jumboQty = parseInt(document.getElementById('jumbo').value) || 0;
+        
+        if (jumboQty > 0) {
+            // Ensure all required fields are filled
+            saveTreatData();
+            
+            // No validation errors
+            return true;
+        }
+        
+        return true; // No jumbo treats, so no validation needed
+    }
+</script>
 
 </body>
 </html>
